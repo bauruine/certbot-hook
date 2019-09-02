@@ -23,12 +23,12 @@ EOM
 
 date > /tmp/letsencrypt.log
 echo "Creating challenge for ${CERTBOT_DOMAIN}"
-numberofservers=$(dig +short NS ${CERTBOT_DOMAIN} | wc -l)
+numberofservers=$(dig +short NS ${BASE_DOMAIN} | wc -l)
 echo "Number of servers is ${numberofservers}" >> /tmp/letsencrypt.log
 for seconds in {1..60}
 do
         i=0
-        for dns in $(dig +short NS ${CERTBOT_DOMAIN})
+        for dns in $(dig +short NS ${BASE_DOMAIN})
         do
 		echo "Testing ${dns}" >> /tmp/letsencrypt.log
                 output=$(dig +short TXT ${HOST}.${CERTBOT_DOMAIN} @${dns})
