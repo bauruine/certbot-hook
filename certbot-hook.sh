@@ -44,7 +44,7 @@ do
                 if [[ $i -ge ${numberofservers} ]]
                 then
                         echo "Record is availlable on all DNS servers continue" >> /tmp/letsencrypt.log
-						sleep 120
+						sleep 300
                         exit
                 else
 			echo "only ${i} servers have the correct record" >> /tmp/letsencrypt.log
