@@ -14,7 +14,7 @@ BASE_DOMAIN=$(echo ${CERTBOT_DOMAIN} | awk -F'.' '{print $(NF-1) "." $NF}')
 echo "Send DNS update"
 
 /usr/bin/nsupdate -k /etc/letsencrypt/scripts/bind.key << EOM
-server 10.0.3.21
+server dns.tuxli.ch
 zone ${BASE_DOMAIN}
 update delete ${HOST}.${CERTBOT_DOMAIN} TXT
 update add ${HOST}.${CERTBOT_DOMAIN} 300 TXT "${CERTBOT_VALIDATION}"
